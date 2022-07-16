@@ -1,0 +1,139 @@
+{
+  "main": {
+    "id": "8b5fb1cfa995d751",
+    "type": "split",
+    "children": [
+      {
+        "id": "6279449029f05bab",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "5.模块化开发.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c26672edb19ae825",
+    "type": "split",
+    "children": [
+      {
+        "id": "2ec18d73f62d22f6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "55ec5491164ee2a6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "fcf195a6eda7277f",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "bdedfa37d5316d63",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 177.49999809265137,
+    "collapsed": true
+  },
+  "right": {
+    "id": "703378129780678d",
+    "type": "split",
+    "children": [
+      {
+        "id": "98321f164271ab5e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2f363bba23a441f2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "5.模块化开发.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d41c382816151570",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d9c6fe7823491b01",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "5.模块化开发.md"
+              }
+            }
+          },
+          {
+            "id": "5e1a68daef6adb06",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "5.模块化开发.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "6279449029f05bab",
+  "lastOpenFiles": [
+    "2.ES6补充.md",
+    "5.模块化开发.md",
+    "1.邂逅vuejs.md",
+    "2022-07-16.md"
+  ]
+}
