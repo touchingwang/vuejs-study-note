@@ -1,7 +1,7 @@
 {
   "fileSortOrder": "byModifiedTimeReverse",
   "promptDelete": false,
-  "livePreview": false,
+  "livePreview": true,
   "defaultViewMode": "preview",
   "readableLineLength": false,
   "strictLineBreaks": false,

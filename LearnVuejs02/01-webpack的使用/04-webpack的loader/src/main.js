@@ -19,10 +19,11 @@ require('./css/special.less')
 
 //5.使用Vue进行开发
 import Vue from 'vue'
+import App from './vue/App.vue'
 
-const app = new Vue({
+new Vue({
   el: '#app',
-  data: {
-    message: 'Hello Webpack',
-  },
+  template: '<App/>',
+  methods: {},
+  components: { App },
 })

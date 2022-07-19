@@ -61,7 +61,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 177.49999809265137,
+    "width": 168,
     "collapsed": true
   },
   "right": {
@@ -131,8 +131,9 @@
   },
   "active": "6279449029f05bab",
   "lastOpenFiles": [
-    "2.ES6补充.md",
+    "SCSS.md",
     "5.模块化开发.md",
+    "2.ES6补充.md",
     "1.邂逅vuejs.md",
     "2022-07-16.md"
   ]

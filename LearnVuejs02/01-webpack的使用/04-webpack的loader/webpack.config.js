@@ -38,10 +38,15 @@ module.exports = {
           },
         },
       },
+      {
+        test: /.vue$/,
+        use: ['vue-loader'],
+      },
     ],
   },
   resolve: {
     //alias: 别名
+    extensions: ['.js', '.css', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
     },
