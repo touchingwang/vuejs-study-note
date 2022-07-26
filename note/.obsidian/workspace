@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "5.模块化开发.md",
+            "file": "vuecli.md",
             "mode": "source",
             "source": false
           }
@@ -78,7 +78,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "5.模块化开发.md",
+                "file": "vuecli.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -101,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5.模块化开发.md"
+                "file": "vuecli.md"
               }
             }
           },
@@ -111,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5.模块化开发.md",
+                "file": "vuecli.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,8 +131,8 @@
   },
   "active": "6279449029f05bab",
   "lastOpenFiles": [
-    "SCSS.md",
     "5.模块化开发.md",
+    "SCSS.md",
     "2.ES6补充.md",
     "1.邂逅vuejs.md",
     "2022-07-16.md"
