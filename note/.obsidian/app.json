@@ -1,0 +1,20 @@
+{
+  "fileSortOrder": "byModifiedTimeReverse",
+  "promptDelete": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "readableLineLength": false,
+  "strictLineBreaks": false,
+  "showFrontmatter": true,
+  "foldHeading": false,
+  "foldIndent": false,
+  "showLineNumber": true,
+  "showIndentGuide": true,
+  "rightToLeft": false,
+  "spellcheck": false,
+  "autoPairMarkdown": false,
+  "vimMode": false,
+  "lineWrap": true,
+  "smartIndentList": false,
+  "useTab": false
+}
