@@ -9,7 +9,11 @@
         "state": {
           "type": "markdown",
           "state": {
+<<<<<<< HEAD
             "file": "router和HMLT5的hisotry模式.md",
+=======
+            "file": "vuecli.md",
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
             "mode": "source",
             "source": false
           }
@@ -78,7 +82,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "router和HMLT5的hisotry模式.md",
+=======
+                "file": "vuecli.md",
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -101,7 +109,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "router和HMLT5的hisotry模式.md"
+=======
+                "file": "vuecli.md"
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
               }
             }
           },
@@ -111,7 +123,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "router和HMLT5的hisotry模式.md",
+=======
+                "file": "vuecli.md",
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +147,10 @@
   },
   "active": "6279449029f05bab",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "vuecli.md",
+=======
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
     "5.模块化开发.md",
     "SCSS.md",
     "2.ES6补充.md",

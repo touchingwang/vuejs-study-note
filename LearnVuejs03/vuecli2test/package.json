@@ -6,9 +6,15 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+<<<<<<< HEAD
     "build": "node build/build.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src"
+=======
+    "start": "npm run dev",
+    "lint": "eslint --ext .js,.vue src",
+    "build": "node build/build.js"
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
   },
   "dependencies": {
     "vue": "^2.5.2"

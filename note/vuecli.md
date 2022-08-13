@@ -33,9 +33,13 @@ Vue CLI2初始化项目
 
     vue init webpakc my-project
 
+<<<<<<< HEAD
 ## 2. 认识Vue3
 vue-cli3与2版本有很大区别
 - vue-cli3 是基于 webpack4 打造 ,vue-cli3 还是 webpack3
 - vue-cli3 的设计原则是 0 配置 ,移除的配置文件根目录下 , build和config等目录
 - vue-cli3 提供了 vue ui 命令, 提供了可视化配置 , 更加人性化
 - 移除了 static 文件夹 , 新增了public 文件夹 , 并且 index.html 移动到 public 中
+=======
+
+>>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6

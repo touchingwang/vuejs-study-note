@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
+</div>
+
+<template id="content">
+  <div>
+    <h2>{{cmovies}}</h2>
+    <h1>{{cmessage}}</h1>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template: '#content',
+    props: {
+      cmovies: Array,
+      cmessage: String,
+      // cmessage: {
+      //   type: String,
+      //   default: 'aaaaa',
+      //   required: true //传值时必须要该值否则error
+      // }
+    },
+  }
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      movies: ['海王','海泽王','海尔兄弟']
+    },
+    components: {
+      // cpn: cpn 简写cpn
+      // 如果对象的键值相同,可以用与对象的增强写法,直接写一个
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

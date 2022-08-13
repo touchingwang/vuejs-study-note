@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn :cmessage="message" v-on:item_click="cpnClick"></cpn></cpn>
+  <input type="text" v-model="message">
+</div>
+<script src="../js/vue.js"></script>
+
+<template id="content">
+<div>
+  <p>{{cmessage}}</p>
+  <br>
+  <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+</div>
+</template>
+
+<script>
+
+  const cpn = {
+    template: '#content',
+    props: {
+      cmessage: {
+        type: String,
+        default: 'hello world',
+        required: true
+      }
+    },
+    data() {
+      return {
+        categories: [
+          {id: 'aaa', name: '热门推荐'},
+          {id: 'bbb', name: '手机数码'},
+          {id: 'ccc', name: '家用家电'},
+          {id: 'ddd', name: '电脑办公'},
+        ]
+      }
+    },
+    methods:{
+      btnClick(item){
+        this.$emit('item_click',item)
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      cpnClick(item){
+        // this.message = item.name
+        console.log(item.name);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
