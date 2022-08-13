@@ -1,19 +1,15 @@
 {
   "main": {
-    "id": "8b5fb1cfa995d751",
+    "id": "7310046f1bee4bab",
     "type": "split",
     "children": [
       {
-        "id": "6279449029f05bab",
+        "id": "26e233e7d9c0c94b",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-<<<<<<< HEAD
-            "file": "router和HMLT5的hisotry模式.md",
-=======
-            "file": "vuecli.md",
->>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
+            "file": "6.TabBar和Promise.md",
             "mode": "source",
             "source": false
           }
@@ -23,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "c26672edb19ae825",
+    "id": "d25339c558728408",
     "type": "split",
     "children": [
       {
-        "id": "2ec18d73f62d22f6",
+        "id": "1fa783288d0d6165",
         "type": "tabs",
         "children": [
           {
-            "id": "55ec5491164ee2a6",
+            "id": "400702ab065f89e1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,15 +35,7 @@
             }
           },
           {
-            "id": "fcf195a6eda7277f",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "bdedfa37d5316d63",
+            "id": "6ae3c8022ef1b8fb",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -60,40 +48,61 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "b7590484567e4c10",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 168,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "703378129780678d",
+    "id": "bd190e514d7d74ea",
     "type": "split",
     "children": [
       {
-        "id": "98321f164271ab5e",
+        "id": "40884367f642983a",
         "type": "tabs",
         "children": [
           {
-            "id": "2f363bba23a441f2",
+            "id": "a198ab28029d44e0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "6.TabBar和Promise.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "348999affcee03dd",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
-                "file": "router和HMLT5的hisotry模式.md",
-=======
-                "file": "vuecli.md",
->>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
+                "file": "6.TabBar和Promise.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "d41c382816151570",
+            "id": "2b825c0ba7353ba6",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -104,37 +113,12 @@
             }
           },
           {
-            "id": "d9c6fe7823491b01",
+            "id": "86fb9b1e467a1307",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-<<<<<<< HEAD
-                "file": "router和HMLT5的hisotry模式.md"
-=======
-                "file": "vuecli.md"
->>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
-              }
-            }
-          },
-          {
-            "id": "5e1a68daef6adb06",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-<<<<<<< HEAD
-                "file": "router和HMLT5的hisotry模式.md",
-=======
-                "file": "vuecli.md",
->>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "file": "6.TabBar和Promise.md"
               }
             }
           }
@@ -145,16 +129,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6279449029f05bab",
+  "active": "26e233e7d9c0c94b",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "vuecli.md",
-=======
->>>>>>> a55f0d244cf85139d5fc7f12c58914d5d45c72b6
     "5.模块化开发.md",
-    "SCSS.md",
-    "2.ES6补充.md",
-    "1.邂逅vuejs.md",
-    "2022-07-16.md"
+    "router和HMLT5的hisotry模式.md",
+    "vuecli.md",
+    "SCSS.md"
   ]
 }

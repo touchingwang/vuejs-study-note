@@ -8,14 +8,14 @@
 
     <router-link to="/home" replace>首页</router-link>
     <router-link to="/about" replace>关于</router-link>
-    <router-link :to="/user/+userId" replace>用户</router-link>
+    <router-link :to="/user/ + userId" replace>用户</router-link>
     <!-- <router-link to="/profile" replace>档案</router-link> -->
-    <router-link :to="{path: '/profile',
-      query: {name:'why',age:18,height:1.88}}">
+    <router-link
+      :to="{ path: '/profile', query: { name: 'why', age: 18, height: 1.88 } }"
+    >
       档案
     </router-link>
-
-    <router-view></router-view>
+    <keep-alive exclude="Profile"> <router-view></router-view></keep-alive>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       userId: 'lisi',
-      imgURL: 'http://www.baidu.com'
+      imgURL: 'http://www.baidu.com',
     }
   },
   methods: {
@@ -35,12 +35,12 @@ export default {
     lickToAbout() {
       this.$router.push('/about')
     },
-  }
+  },
 }
 </script>
 
 <style>
-.active{
-  color: blueviolet ;
+.active {
+  color: blueviolet;
 }
 </style>
