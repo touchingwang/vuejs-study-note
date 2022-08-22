@@ -1,8 +1,8 @@
 <!--
-  功能：选项卡可控制的一个东西
+  功能：功能描述
   作者：touchingwang
   邮箱：touchingwang@163.com
-  时间：2022年08月17日 21:48:22
+  时间：2022年08月22日 21:10:33
   版本：v1.0
   修改记录：
   修改内容：
@@ -10,51 +10,41 @@
   修改时间：
 -->
 <template>
-  <div id="" class="tab-control">
-    <div
-      v-for="(item, index) in titles"
-      :key="item"
-      class="tab-control-item"
-      :class="{ active: index === currentIndex }"
-      @click="itemClick(index)"
-    >
-      <span>{{ item }}</span>
-    </div>
+  <div class="goods">
+    <goods-list-item v-for="item in goods" :goods-item="item">
+    </goods-list-item>
   </div>
 </template>
 
 <script>
+import goodsListItem from "./GoodsListItem";
+
 export default {
   // 组件名称
-  name: "TabControl",
+  name: "goodList",
   // 组件参数 接收来自父组件的数据
   props: {
-    titles: {
-      Type: Array,
+    goods: {
+      type: Array,
       default() {
         return [];
       },
     },
   },
   // 局部注册的组件
-  components: {},
+  components: {
+    goodsListItem,
+  },
   // 组件状态值
   data() {
-    return {
-      currentIndex: 0,
-    };
+    return {};
   },
   // 计算属性
   computed: {},
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {
-    itemClick(index) {
-      this.currentIndex = index;
-      this.$emit("tabClick", index);
-    },
-  },
+  methods: {},
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -72,7 +62,9 @@ export default {
    * el 被新创建的 vm.$ el 替换，并挂载到实例上去之后调用该钩子。
    * 如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$ el 也在文档内。
    */
-  mounted() {},
+  mounted() {
+    // console.log(this.goods);
+  },
   /**
    * 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。
    * 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
@@ -108,24 +100,10 @@ export default {
 <!--然而子组件的根节点元素会同时被设置了scoped的父css样式和设置了scoped的子css样式影响，-->
 <!--这么设计的目的是父组件可以对子组件根元素进行布局。-->
 <style scoped>
-.tab-control {
+.goods {
   display: flex;
-  text-align: center;
-  font-size: 15px;
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
-}
-.tab-control-item {
-  flex: 1;
-}
-.tab-control-item span {
-  padding: 5px;
-}
-.active {
-  color: #f697a1;
-}
-.active span {
-  border-bottom: 3px solid #ff8e95;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2px;
 }
 </style>

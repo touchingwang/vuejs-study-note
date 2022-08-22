@@ -1,8 +1,8 @@
 <!--
-  功能：选项卡可控制的一个东西
+  功能：功能描述
   作者：touchingwang
   邮箱：touchingwang@163.com
-  时间：2022年08月17日 21:48:22
+  时间：2022年08月22日 21:10:48
   版本：v1.0
   修改记录：
   修改内容：
@@ -10,15 +10,12 @@
   修改时间：
 -->
 <template>
-  <div id="" class="tab-control">
-    <div
-      v-for="(item, index) in titles"
-      :key="item"
-      class="tab-control-item"
-      :class="{ active: index === currentIndex }"
-      @click="itemClick(index)"
-    >
-      <span>{{ item }}</span>
+  <div class="goods-item">
+    <img :src="goodsItem.show.img" alt="" />
+    <div class="goods-info">
+      <p>{{ goodsItem.title }}</p>
+      <span class="price">{{ goodsItem.price }}</span>
+      <span class="collect">{{ goodsItem.cfav }}</span>
     </div>
   </div>
 </template>
@@ -26,13 +23,13 @@
 <script>
 export default {
   // 组件名称
-  name: "TabControl",
+  name: "goodsListItem",
   // 组件参数 接收来自父组件的数据
   props: {
-    titles: {
-      Type: Array,
+    goodsItem: {
+      type: Object,
       default() {
-        return [];
+        return {};
       },
     },
   },
@@ -40,21 +37,14 @@ export default {
   components: {},
   // 组件状态值
   data() {
-    return {
-      currentIndex: 0,
-    };
+    return {};
   },
   // 计算属性
   computed: {},
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {
-    itemClick(index) {
-      this.currentIndex = index;
-      this.$emit("tabClick", index);
-    },
-  },
+  methods: {},
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -67,7 +57,9 @@ export default {
   /**
    * 在挂载开始之前被调用：相关的 render 函数首次被调用。
    */
-  beforeMount() {},
+  beforeMount() {
+    // console.log(this.goodsItem);
+  },
   /**
    * el 被新创建的 vm.$ el 替换，并挂载到实例上去之后调用该钩子。
    * 如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$ el 也在文档内。
@@ -108,24 +100,44 @@ export default {
 <!--然而子组件的根节点元素会同时被设置了scoped的父css样式和设置了scoped的子css样式影响，-->
 <!--这么设计的目的是父组件可以对子组件根元素进行布局。-->
 <style scoped>
-.tab-control {
-  display: flex;
+.goods-item {
+  padding-bottom: 40px;
+  position: relative;
+  width: 48%;
+}
+.goods-item img {
+  width: 100%;
+  border-radius: 5xp;
+}
+.goods-info {
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
   text-align: center;
-  font-size: 15px;
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
 }
-.tab-control-item {
-  flex: 1;
+.goods-info p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
 }
-.tab-control-item span {
-  padding: 5px;
+.goods-info .price {
+  color: red;
+  margin-right: 20px;
 }
-.active {
-  color: #f697a1;
+.goods-info .collect {
+  position: relative;
 }
-.active span {
-  border-bottom: 3px solid #ff8e95;
+.goods-info .collect::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  width: 14px;
+  height: 14px;
+  background: url("~assets/img/home/collect_icon.png") 0 0/14px 14px;
 }
 </style>
