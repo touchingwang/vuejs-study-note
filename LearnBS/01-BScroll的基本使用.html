@@ -128,7 +128,7 @@
   // 2:在手指滚动的过程中侦测,手指离开后的惯性滚动过程不侦测
   // 3:只要是滚动,都侦测
   const bscroll = new BScroll(document.querySelector('.content'),{
-    probeType: 2,
+    probeType: 3,
     click: true,
     pullUpLoad: true,
   })
@@ -144,7 +144,7 @@
   })
 
   bscroll.on('scroll',(position) => {
-    // console.log(position);
+    console.log(position);
   })
 </script>
 </body>
