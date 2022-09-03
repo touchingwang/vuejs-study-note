@@ -10,8 +10,8 @@
   修改时间：
 -->
 <template>
-  <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" />
+  <div class="goods-item" @click="itemClick">
+    <img :src="goodsItem.show.img" alt="" @load="imageLoad" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -44,7 +44,14 @@ export default {
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {},
+  methods: {
+    imageLoad() {
+      this.$bus.$emit("itemImageLoad");
+    },
+    itemClick() {
+      this.$router.push("/detial/" + this.goodsItem.iid);
+    },
+  },
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等

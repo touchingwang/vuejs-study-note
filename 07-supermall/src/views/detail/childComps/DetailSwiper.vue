@@ -2,7 +2,7 @@
   功能：功能描述
   作者：touchingwang
   邮箱：touchingwang@163.com
-  时间：2022年08月23日 21:12:41
+  时间：2022年09月03日 16:33:41
   版本：v1.0
   修改记录：
   修改内容：
@@ -10,57 +10,43 @@
   修改时间：
 -->
 <template>
-  <div class="wrapper" ref="wrapper">
-    <div class="content">
-      <slot></slot>
-    </div>
-  </div>
+  <swiper class="detail-swiper">
+    <swiper-item class="swiper-item" v-for="item in topImages">
+      <img :src="item" alt="" />
+    </swiper-item>
+  </swiper>
 </template>
 
 <script>
-import BScroll from "better-scroll";
+import { Swiper, SwiperItem } from "components/common/swiper";
 
 export default {
   // 组件名称
-  name: "Scroll",
+  name: "DetailSwiper",
   // 组件参数 接收来自父组件的数据
   props: {
-    probeType: {
-      type: Number,
-      default: 0,
-    },
-    pullUpLoad: {
-      type: Boolean,
-      default: false,
+    topImages: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
   },
   // 局部注册的组件
-  components: {},
+  components: {
+    Swiper,
+    SwiperItem,
+  },
   // 组件状态值
   data() {
-    return {
-      scroll: null,
-    };
+    return {};
   },
   // 计算属性
   computed: {},
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {
-    scrollTo(x, y, time = 300) {
-      this.scroll && this.scroll.scrollTo(x, y, time);
-    },
-    finishPullUp() {
-      this.scroll.finishPullUp();
-    },
-    refresh() {
-      this.scroll && this.scroll.refresh();
-    },
-    getScrollY() {
-      return this.scroll ? this.scroll.y : 0;
-    },
-  },
+  methods: {},
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -78,29 +64,7 @@ export default {
    * el 被新创建的 vm.$ el 替换，并挂载到实例上去之后调用该钩子。
    * 如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$ el 也在文档内。
    */
-  mounted() {
-    // 1.创建BScroll对象
-    this.scroll = new BScroll(this.$refs.wrapper, {
-      click: true,
-      probeType: this.probeType,
-      pullUpLoad: this.pullUpLoad,
-      observeDOM: true,
-    });
-
-    // 2.监听滚动的位置
-    if (this.probeType === 2 || this.probeType === 3) {
-      this.scroll.on("scroll", (position) => {
-        this.$emit("scroll", position);
-      });
-    }
-
-    // 3.监听上拉事件
-    if (this.pullUpLoad) {
-      this.scroll.on("pullingUp", () => {
-        this.$emit("pullingUp");
-      });
-    }
-  },
+  mounted() {},
   /**
    * 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。
    * 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
@@ -135,4 +99,9 @@ export default {
 <!--使用了scoped属性之后，当前组件的style样式将不会渗透到子组件中，-->
 <!--然而子组件的根节点元素会同时被设置了scoped的父css样式和设置了scoped的子css样式影响，-->
 <!--这么设计的目的是父组件可以对子组件根元素进行布局。-->
-<style scoped></style>
+<style scoped>
+.detail-swiper {
+  height: 300px;
+  overflow: hidden;
+}
+</style>

@@ -2,7 +2,7 @@
   功能：功能描述
   作者：touchingwang
   邮箱：touchingwang@163.com
-  时间：2022年08月23日 21:12:41
+  时间：2022年09月03日 15:20:44
   版本：v1.0
   修改记录：
   修改内容：
@@ -10,36 +10,41 @@
   修改时间：
 -->
 <template>
-  <div class="wrapper" ref="wrapper">
-    <div class="content">
-      <slot></slot>
-    </div>
+  <div id="detail" class="">
+    <detail-nav-bar />
+    <detail-swiper :top-images="topImages" />
+    <detail-base-info :goods="goods" />
+    <detail-shop-info :shop="shop" />
   </div>
 </template>
 
 <script>
-import BScroll from "better-scroll";
+import DetailNavBar from "./childComps/DetailNavBar";
+import DetailSwiper from "./childComps/DetailSwiper";
+import DetailBaseInfo from "./childComps/DetailBaseInfo";
+import DetailShopInfo from "./childComps/DetailShopInfo";
+
+import { getDetail, Goods, Shop } from "network/detail.js";
 
 export default {
   // 组件名称
-  name: "Scroll",
+  name: "Detail",
   // 组件参数 接收来自父组件的数据
-  props: {
-    probeType: {
-      type: Number,
-      default: 0,
-    },
-    pullUpLoad: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  props: {},
   // 局部注册的组件
-  components: {},
+  components: {
+    DetailNavBar,
+    DetailSwiper,
+    DetailBaseInfo,
+    DetailShopInfo,
+  },
   // 组件状态值
   data() {
     return {
-      scroll: null,
+      iid: null,
+      topImages: [],
+      goods: {},
+      shop: {},
     };
   },
   // 计算属性
@@ -47,20 +52,7 @@ export default {
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {
-    scrollTo(x, y, time = 300) {
-      this.scroll && this.scroll.scrollTo(x, y, time);
-    },
-    finishPullUp() {
-      this.scroll.finishPullUp();
-    },
-    refresh() {
-      this.scroll && this.scroll.refresh();
-    },
-    getScrollY() {
-      return this.scroll ? this.scroll.y : 0;
-    },
-  },
+  methods: {},
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -69,7 +61,28 @@ export default {
   /**
    * 组件实例创建完成，属性已绑定，但DOM还未生成，$ el属性还不存在
    */
-  created() {},
+  created() {
+    // 1.保存传入的iid
+    this.iid = this.$route.params.iid;
+
+    // 2.根据iid请求详情数据
+    getDetail(this.iid).then((res) => {
+      const data = res.result;
+      // 1.获取顶部的图片轮播图
+      console.log(res);
+      this.topImages = data.itemInfo.topImages;
+
+      // 2.获取商品信息
+      this.goods = new Goods(
+        data.itemInfo,
+        data.columns,
+        data.shopInfo.services
+      );
+
+      // 3.创建店铺信息的对象
+      this.shop = new Shop(data.shopInfo);
+    });
+  },
   /**
    * 在挂载开始之前被调用：相关的 render 函数首次被调用。
    */
@@ -78,29 +91,7 @@ export default {
    * el 被新创建的 vm.$ el 替换，并挂载到实例上去之后调用该钩子。
    * 如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$ el 也在文档内。
    */
-  mounted() {
-    // 1.创建BScroll对象
-    this.scroll = new BScroll(this.$refs.wrapper, {
-      click: true,
-      probeType: this.probeType,
-      pullUpLoad: this.pullUpLoad,
-      observeDOM: true,
-    });
-
-    // 2.监听滚动的位置
-    if (this.probeType === 2 || this.probeType === 3) {
-      this.scroll.on("scroll", (position) => {
-        this.$emit("scroll", position);
-      });
-    }
-
-    // 3.监听上拉事件
-    if (this.pullUpLoad) {
-      this.scroll.on("pullingUp", () => {
-        this.$emit("pullingUp");
-      });
-    }
-  },
+  mounted() {},
   /**
    * 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。
    * 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
@@ -114,7 +105,9 @@ export default {
   /**
    * keep-alive 组件激活时调用。 仅针对keep-alive 组件有效
    */
-  activated() {},
+  activated() {
+    this.iid = this.$route.params.iid;
+  },
   /**
    * keep-alive 组件停用时调用。 仅针对keep-alive 组件有效
    */
