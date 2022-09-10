@@ -11,10 +11,16 @@
 -->
 <template>
   <div id="detail" class="">
-    <detail-nav-bar />
-    <detail-swiper :top-images="topImages" />
-    <detail-base-info :goods="goods" />
-    <detail-shop-info :shop="shop" />
+    <detail-nav-bar class="detail-nav" />
+    <scroll class="content" ref="scroll">
+      <detail-swiper :top-images="topImages" />
+      <detail-base-info :goods="goods" />
+      <detail-shop-info :shop="shop" />
+      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad" />
+      <detail-param-info :param-info="paramInfo" />
+      <detail-comment-info :comment-info="commentInfo"></detail-comment-info>
+      <goods-list :goods="recommends" />
+    </scroll>
   </div>
 </template>
 
@@ -23,8 +29,20 @@ import DetailNavBar from "./childComps/DetailNavBar";
 import DetailSwiper from "./childComps/DetailSwiper";
 import DetailBaseInfo from "./childComps/DetailBaseInfo";
 import DetailShopInfo from "./childComps/DetailShopInfo";
+import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
+import DetailParamInfo from "./childComps/DetailParamInfo";
+import DetailCommentInfo from "./childComps/DetailCommentInfo";
 
-import { getDetail, Goods, Shop } from "network/detail.js";
+import Scroll from "components/common/scroll/Scroll";
+import GoodsList from "components/content/goods/GoodsList";
+
+import {
+  getDetail,
+  Goods,
+  Shop,
+  GoodsParam,
+  getRecommend,
+} from "network/detail.js";
 
 export default {
   // 组件名称
@@ -37,6 +55,11 @@ export default {
     DetailSwiper,
     DetailBaseInfo,
     DetailShopInfo,
+    DetailGoodsInfo,
+    DetailParamInfo,
+    DetailCommentInfo,
+    Scroll,
+    GoodsList,
   },
   // 组件状态值
   data() {
@@ -45,6 +68,10 @@ export default {
       topImages: [],
       goods: {},
       shop: {},
+      detailInfo: {},
+      paramInfo: {},
+      commentInfo: {},
+      recommends: [],
     };
   },
   // 计算属性
@@ -52,7 +79,11 @@ export default {
   // 侦听器
   watch: {},
   // 组件方法
-  methods: {},
+  methods: {
+    imageLoad() {
+      this.$refs.scroll.refresh();
+    },
+  },
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -69,7 +100,7 @@ export default {
     getDetail(this.iid).then((res) => {
       const data = res.result;
       // 1.获取顶部的图片轮播图
-      console.log(res);
+      // console.log(res);
       this.topImages = data.itemInfo.topImages;
 
       // 2.获取商品信息
@@ -81,6 +112,26 @@ export default {
 
       // 3.创建店铺信息的对象
       this.shop = new Shop(data.shopInfo);
+
+      // 4.保存商品的详细数据
+      this.detailInfo = data.detailInfo;
+
+      // 5.获取参数信息
+      this.paramInfo = new GoodsParam(
+        data.itemParams.info,
+        data.itemParams.rule
+      );
+
+      // 7.取出评论的信息
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0];
+      }
+    });
+
+    // 3.请求推荐数据
+    getRecommend(this.iid).then((res) => {
+      // console.log(res);
+      this.recommends = res.data.list;
     });
   },
   /**
@@ -128,4 +179,19 @@ export default {
 <!--使用了scoped属性之后，当前组件的style样式将不会渗透到子组件中，-->
 <!--然而子组件的根节点元素会同时被设置了scoped的父css样式和设置了scoped的子css样式影响，-->
 <!--这么设计的目的是父组件可以对子组件根元素进行布局。-->
-<style scoped></style>
+<style scoped>
+#detail {
+  position: relative;
+  z-index: 9;
+  background-color: #fff;
+  height: 100vh;
+}
+.detail-nav {
+  position: relative;
+  z-index: 9;
+  background-color: #fff;
+}
+.content {
+  height: calc(100% - 44px);
+}
+</style>

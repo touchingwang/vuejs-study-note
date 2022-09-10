@@ -2,7 +2,7 @@
   功能：功能描述
   作者：touchingwang
   邮箱：touchingwang@163.com
-  时间：2022年09月03日 18:09:36
+  时间：2022年09月04日 09:38:39
   版本：v1.0
   修改记录：
   修改内容：
@@ -10,27 +10,20 @@
   修改时间：
 -->
 <template>
-  <div v-if="Object.keys(goods).length !== 0" class="base-info">
-    <div class="info-title">{{ goods.title }}</div>
-    <div class="info-price">
-      <span class="n-price">{{ goods.newPrice }}</span>
-      <span class="o-price">{{ goods.oldPrice }}</span>
-      <span v-if="goods.discount" class="discount">{{ goods.discount }}</span>
+  <div v-if="Object.keys(detailInfo).length !== 0" class="goods-info">
+    <div class="info-desc clear-fix">
+      <div class="start"></div>
+      <div class="desc">{{ detailInfo.desc }}</div>
+      <div class="end"></div>
     </div>
-    <div class="info-other">
-      <span>{{ goods.columns[0] }}</span>
-      <span>{{ goods.columns[1] }}</span>
-      <span>{{ goods.services[goods.services.length - 1].name }}</span>
-    </div>
-    <div class="info-service">
-      <span
-        class="info-service-item"
-        v-for="index in goods.services.length - 1"
-        :key="index"
-      >
-        <img :src="goods.services[index - 1].icon" />
-        <span>{{ goods.services[index - 1].name }}</span>
-      </span>
+    <div class="info-key">{{ detailInfo.detailImage[0].key }}</div>
+    <div class="info-list">
+      <img
+        v-for="(item, index) in detailInfo.detailImage[0].list"
+        :src="item"
+        alt=""
+        @load="imgLoad"
+      />
     </div>
   </div>
 </template>
@@ -38,10 +31,10 @@
 <script>
 export default {
   // 组件名称
-  name: "DetailBaseInfo",
+  name: "DetailGoodsInfo",
   // 组件参数 接收来自父组件的数据
   props: {
-    goods: {
+    detailInfo: {
       type: Object,
     },
   },
@@ -49,14 +42,29 @@ export default {
   components: {},
   // 组件状态值
   data() {
-    return {};
+    return {
+      counter: 0,
+      imagesLength: 0,
+    };
   },
   // 计算属性
   computed: {},
   // 侦听器
-  watch: {},
+  watch: {
+    detailInfo() {
+      //获取图片的个数
+      this.imagesLength = this.detailInfo.detailImage[0].list.length;
+    },
+  },
   // 组件方法
-  methods: {},
+  methods: {
+    imgLoad() {
+      //判断,所有的图片都加载完了,那么进行一次回调就可以了
+      if (++this.counter === this.imagesLength) {
+        this.$emit("imageLoad");
+      }
+    },
+  },
   // 以下是生命周期钩子   注：没用到的钩子请自行删除
   /**
    * 在实例初始化之后，组件属性计算之前，如data属性等
@@ -110,61 +118,48 @@ export default {
 <!--然而子组件的根节点元素会同时被设置了scoped的父css样式和设置了scoped的子css样式影响，-->
 <!--这么设计的目的是父组件可以对子组件根元素进行布局。-->
 <style scoped>
-.base-info {
-  margin-top: 15px;
-  padding: 0 8px;
-  color: #999;
+.goods-info {
+  padding: 20px 0;
   border-bottom: 5px solid #f2f5f8;
 }
-.info-title {
-  color: #222;
+.info-desc {
+  padding: 0 15px;
 }
-.info-price {
-  margin-top: 10px;
-}
-.info-price .n-price {
-  font-size: 24px;
-  color: var(--color-high-text);
-}
-.info-price .o-price {
-  font-size: 13px;
-  margin-left: 5px;
-  text-decoration: line-through;
-}
-
-.info-price .discount {
-  font-size: 12px;
-  padding: 2px 5px;
-  color: #fff;
-  background-color: #d34d79;
-  border-radius: 8px;
-  margin-left: 5px;
-
-  /* 让元素上浮一些:使用相对定义即可 */
+.info-desc .start,
+.info-desc .end {
+  width: 90px;
+  height: 1px;
+  background-color: #a3a3a5;
   position: relative;
-  top: -8px;
 }
-.info-other {
-  margin-top: 15px;
-  line-height: 30px;
-  display: flex;
-  font-size: 13px;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
-  justify-content: space-between;
+.info-desc .start {
+  float: left;
 }
-.info-service {
-  display: flex;
-  justify-content: space-between;
-  line-height: 60px;
+.info-desc .end {
+  float: right;
 }
-.info-service-item img {
-  widows: 14px;
-  height: 14px;
-  position: relative;
-  top: 2px;
+.info-desc .start::before,
+.info-desc .end::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #333;
+  bottom: 0;
 }
-.info-service-item span {
-  font-size: 13px;
+.info-desc .end::after {
+  right: 0;
+}
+.info-desc .desc {
+  padding: 15px 0;
+  font-size: 14px;
+}
+.info-key {
+  margin: 10px 0 10px 15px;
   color: #333;
+  font-size: 15px;
+}
+.info-list img {
+  width: 100%;
 }
 </style>
